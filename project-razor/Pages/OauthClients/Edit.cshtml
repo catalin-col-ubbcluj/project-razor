@@ -1,0 +1,39 @@
+@page
+@model project_razor.Pages.OauthClients.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OauthClient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OauthClient.Id" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="OauthClient.ClientId" class="control-label"></label>
+                <input asp-for="OauthClient.ClientId" class="form-control" />
+                <span asp-validation-for="OauthClient.ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="OauthClient.RedirectUri" class="control-label"></label>
+                <input asp-for="OauthClient.RedirectUri" class="form-control" />
+                <span asp-validation-for="OauthClient.RedirectUri" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+

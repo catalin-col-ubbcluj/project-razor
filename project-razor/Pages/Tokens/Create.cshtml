@@ -1,0 +1,57 @@
+@page
+@model project_razor.Pages.Tokens.CreateModel
+
+        @{
+        Layout = null;
+        }
+        
+        <!DOCTYPE html>
+        
+        <html>
+        <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Create</title>
+        </head>
+        <body>
+        
+    <h4>Token</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Token.AccessToken" class="control-label"></label>
+                <input asp-for="Token.AccessToken" class="form-control" />
+                <span asp-validation-for="Token.AccessToken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Token.IssuedAt" class="control-label"></label>
+                <input asp-for="Token.IssuedAt" class="form-control" />
+                <span asp-validation-for="Token.IssuedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Token.ExpiresAt" class="control-label"></label>
+                <input asp-for="Token.ExpiresAt" class="form-control" />
+                <span asp-validation-for="Token.ExpiresAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Token.Username" class="control-label"></label>
+                <input asp-for="Token.Username" class="form-control" />
+                <span asp-validation-for="Token.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+</body>
+</html>

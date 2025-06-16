@@ -1,0 +1,57 @@
+@page
+@model project_razor.Pages.Users.MyProfileModel
+@{
+    ViewData["Title"] = "Your Profile";
+}
+
+<h2>Your Profile</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="mt-4" style="max-width: 600px;">
+    <form method="post">
+        <div class="mt-3">
+            <label asp-for="CurrentUser.Username" class="form-label">Username</label>
+            <input asp-for="CurrentUser.Username" class="form-control" disabled />
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="CurrentUser.Email" class="form-label">Email</label>
+            <input asp-for="CurrentUser.Email" class="form-control" />
+        </div>
+
+        <div class="mt-3">
+            <label asp-for="NewPassword" class="form-label">New Password</label>
+            <input asp-for="NewPassword" type="password" class="form-control" />
+            <small class="form-text text-muted">Leave empty if you don't want to change it.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-5">Save Changes</button>
+    </form>
+
+    <hr class="my-4" />
+    @if (!Model.HasDeveloperRole)
+    {
+        <form method="post" asp-page-handler="AddDeveloperRole" class="mt-4">
+            <button type="submit" class="btn btn-outline-primary">
+                Request Developer Access
+            </button>
+        </form>
+    }
+    else
+    {
+        <div class="mt-4 alert alert-success">
+            You have developer access.
+        </div>
+    }
+
+    <hr class="my-4">
+
+    <form method="post" asp-page-handler="Delete"
+        onsubmit="return confirm('Are you sure you want to delete your account?');">
+        <button type="submit" class="btn btn-danger">Delete My Account</button>
+    </form>
+</div>

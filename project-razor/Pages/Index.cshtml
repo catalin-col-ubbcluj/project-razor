@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "IAM Platform";
+}
+
+<div class="container mt-5">
+    <div class="text-center mt-4">
+        <h1 class="display-4">Welcome to the simplest IAM Platform</h1>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6 mt-4">
+            <h3>Authentication</h3>
+            <p class="mt-2">Secure login and registration with password policies, SHA-256 hashing, and session persistence via auth cookies.</p>
+        </div>
+        <div class="col-md-6 mt-4">
+            <h3>Roles & Permissions</h3>
+            <p class="mt-2">Assign roles to users like <strong>admin</strong>, <strong>developer</strong>, or <strong>user</strong> to control access to specific parts of the app.</p>
+        </div>
+        <div class="col-md-6 mt-4">
+            <h3>OAuth2 Clients</h3>
+            <p class="mt-2">Register applications that can authenticate users via the <code>/oauth2/authorize</code> endpoint and receive access tokens.</p>
+        </div>
+        <div class="col-md-6 mt-4">
+            <h3>Active Sessions</h3>
+            <p class="mt-2">Users can view and revoke their issued tokens through the <strong>My Sessions</strong> page for better security.</p>
+        </div>
+        <div class="col-md-6 mt-4">
+            <h3> Developer Tools</h3>
+            <p class="mt-2">OAuth2 flows supported for client apps with token issuance and <code>/userinfo</code> endpoints.</p>
+        </div>
+        <div class="col-md-6 mt-4">
+            <h3>My Profile</h3>
+            <p class="mt-2">Users can update their email, change password, or delete their account from the profile page.</p>
+        </div>
+    </div>
+</div>

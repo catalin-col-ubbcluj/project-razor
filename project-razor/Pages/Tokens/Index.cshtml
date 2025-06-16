@@ -1,0 +1,42 @@
+@page
+@model project_razor.Pages.Tokens.IndexModel
+@{
+    ViewData["Title"] = "Active Sessions";
+}
+
+<h2>Active Sessions</h2>
+
+@if (!Model.MyTokens.Any())
+{
+    <p>No active sessions.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Issued At</th>
+                <th>Expires At</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var token in Model.MyTokens)
+            {
+                <tr>
+                    <td>@token.Audience</td>
+                    <td>@token.IssuedAt.ToLocalTime()</td>
+                    <td>@token.ExpiresAt.ToLocalTime()</td>
+                    <td>
+                        <form method="post" asp-page-handler="Revoke">
+                            <input type="hidden" name="id" value="@token.Id" />
+                            <button type="submit" class="btn btn-sm btn-danger">Revoke</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
