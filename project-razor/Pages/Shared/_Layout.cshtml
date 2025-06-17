@@ -51,9 +51,9 @@
                     </ul>
 
                     <ul class="navbar-nav">
-                        <span class="navbar-text me-2">Welcome, @User.Identity.Name</span>
                         @if (User.Identity?.IsAuthenticated == true)
                         {
+                            <span class="navbar-text me-2">Welcome, @User.Identity.Name</span>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-page="/Tokens/Index">Active Sessions</a>
                             </li>

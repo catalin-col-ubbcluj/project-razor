@@ -17,9 +17,11 @@ namespace project_razor.Pages.Auth
             _context = context;
         }
 
+        // The registering user object
         [BindProperty]
-        public User RegisterUser { get; set; } = new();
+        public User NewUser { get; set; } = new();
 
+        // Password
         [BindProperty]
         [Required]
         [StringLength(18, MinimumLength = 6, ErrorMessage = "Password must be between 6 and 18 characters.")]
@@ -28,37 +30,42 @@ namespace project_razor.Pages.Auth
             ErrorMessage = "Password must contain an uppercase letter, a number, and a special character.")]
         public string Password { get; set; } = string.Empty;
 
-        public string? UsernameError { get; set; }
+        [BindProperty]
+        public bool IsDeveloper { get; set; }
 
         public void OnGet() { }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            RegisterUser.PasswordHash = ComputeSha256Hash(Password);
-            RegisterUser.CreatedAt = DateTime.Now;
+            NewUser.PasswordHash = ComputeSha256Hash(Password);
+            NewUser.CreatedAt = DateTime.Now;
 
-            // Check if username already exists
-            var exists = await _context.Users.AnyAsync(u => u.Username == RegisterUser.Username);
             if (!ModelState.IsValid)
                 return Page();
 
-
+            // Check if username already exists
+            var exists = await _context.Users.AnyAsync(u => u.Username == NewUser.Username);
             if (exists)
             {
-                UsernameError = "Username is already taken.";
+                ModelState.AddModelError("NewUser.Username", "Username is already taken.");
                 return Page();
             }
 
-            _context.Users.Add(RegisterUser);
+            _context.Users.Add(NewUser);
             await _context.SaveChangesAsync();
 
-            var userRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
-            if (userRole != null)
+            var roleName = IsDeveloper ? "developer" : "user";
+            var roleId = await _context.Roles
+                .Where(r => r.Name == roleName)
+                .Select(r => r.Id)
+                .FirstOrDefaultAsync();
+
+            if (roleId != 0)
             {
                 _context.UserRoles.Add(new UserRole
                 {
-                    UserId = RegisterUser.Id,
-                    RoleId = userRole.Id,
+                    UserId = NewUser.Id,
+                    RoleId = roleId,
                     AssignedAt = DateTime.UtcNow
                 });
 

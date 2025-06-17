@@ -9,24 +9,19 @@
         <div style="max-width: 400px; margin: auto;">
             <div class="card shadow-sm">
                 <div class="card-body">
-
                     <h2 class="mt-4">Create an Account</h2>
 
                     <form method="post" class="needs-validation mt-4" novalidate>
                         <div>
-                            <label asp-for="RegisterUser.Username" class="form-label"></label>
-                            <input asp-for="RegisterUser.Username" class="form-control" />
-                            <span asp-validation-for="RegisterUser.Username" class="text-danger"></span>
-                            @if (!string.IsNullOrEmpty(Model.UsernameError))
-                            {
-                                <span class="text-danger">@Model.UsernameError</span>
-                            }
+                            <label asp-for="NewUser.Username" class="form-label"></label>
+                            <input asp-for="NewUser.Username" class="form-control" />
+                            <span asp-validation-for="NewUser.Username" class="text-danger"></span>
                         </div>
 
                         <div class="mt-3">
-                            <label asp-for="RegisterUser.Email" class="form-label"></label>
-                            <input asp-for="RegisterUser.Email" class="form-control" />
-                            <span asp-validation-for="RegisterUser.Email" class="text-danger"></span>
+                            <label asp-for="NewUser.Email" class="form-label"></label>
+                            <input asp-for="NewUser.Email" class="form-control" />
+                            <span asp-validation-for="NewUser.Email" class="text-danger"></span>
                         </div>
 
                         <div class="mt-3">
@@ -35,6 +30,10 @@
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
 
+                        <div class="form-check mt-3">
+                            <input asp-for="IsDeveloper" class="form-check-input" type="checkbox" />
+                            <label asp-for="IsDeveloper" class="form-check-label">Register as developer</label>
+                        </div>
                         <button type="submit" class="btn btn-primary mt-4">Register</button>
                     </form>
                 </div>
