@@ -9,7 +9,7 @@ namespace project_razor.Pages.Auth
         public async Task<IActionResult> OnGetAsync()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToPage("/Auth/Login");
+            return RedirectToPage("/Index");
         }
     }
 }
