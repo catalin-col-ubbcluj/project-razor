@@ -18,7 +18,6 @@ namespace project_razor.Models
             modelBuilder.Entity<UserRole>()
                 .HasKey(ur => new { ur.UserId, ur.RoleId });
 
-            // Relații suplimentare (opțional, dar recomandat)
             modelBuilder.Entity<UserRole>()
                 .HasOne(ur => ur.User)
                 .WithMany(u => u.UserRoles)

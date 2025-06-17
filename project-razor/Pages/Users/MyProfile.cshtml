@@ -32,22 +32,6 @@
         <button type="submit" class="btn btn-primary mt-5">Save Changes</button>
     </form>
 
-    <hr class="my-4" />
-    @if (!Model.HasDeveloperRole)
-    {
-        <form method="post" asp-page-handler="AddDeveloperRole" class="mt-4">
-            <button type="submit" class="btn btn-outline-primary">
-                Request Developer Access
-            </button>
-        </form>
-    }
-    else
-    {
-        <div class="mt-4 alert alert-success">
-            You have developer access.
-        </div>
-    }
-
     <hr class="my-4">
 
     <form method="post" asp-page-handler="Delete"
