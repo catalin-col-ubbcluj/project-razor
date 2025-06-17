@@ -13,6 +13,7 @@
 
 <div class="mt-4" style="max-width: 600px;">
     <form method="post">
+        <input type="hidden" asp-for="CurrentUser.Id" />
         <div class="mt-3">
             <label asp-for="CurrentUser.Username" class="form-label">Username</label>
             <input asp-for="CurrentUser.Username" class="form-control" disabled />

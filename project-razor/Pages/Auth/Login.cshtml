@@ -12,9 +12,9 @@
                     <h2 class="card-title text-center mt-4">Login</h2>
                     @if (!string.IsNullOrEmpty(Model.ErrorMessage))
                     {
-                        <div class="alert alert-danger">@Model.ErrorMessage</div>
+                        <div class="alert mt-4 alert-danger">@Model.ErrorMessage</div>
                     }
-                    <form method="post">
+                    <form method="post" class="mt-4">
                         <input type="hidden" asp-for="ReturnUrl" />
                         <div class="mt-3">
                             <label asp-for="Username" class="form-label"></label>

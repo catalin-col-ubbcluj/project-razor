@@ -44,6 +44,7 @@ namespace project_razor.Pages.Auth
 
             if (user == null)
             {
+                ErrorMessage = "Invalid username or password.";
                 // invalid credentials
                 return Page();
             }
